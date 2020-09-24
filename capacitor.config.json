@@ -1,0 +1,7 @@
+{
+    "appId": "owl.vue.app",
+    "appName": "owl-app",
+    "bundledWebRuntime": false,
+    "webDir": "dist",
+    "linuxAndroidStudioPath": "/home/bruno/android-studio/bin/studio.sh"
+}

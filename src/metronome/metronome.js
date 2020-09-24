@@ -1,0 +1,1 @@
+export const MusicalTimer = require("musical-timer")
