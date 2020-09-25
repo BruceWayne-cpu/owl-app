@@ -1,14 +1,16 @@
 <template>
-  <v-card class="mx-auto" max-width="600">
-    <v-card-text>
-      <v-row class="mb-4" justify="space-between">
-        <v-col class="text-left">
-          <span class="display-3 font-weight-light" v-text="bpm"></span>
-          <span class="subheading font-weight-light mr-1">BPM</span>
+  <v-card-text>
+    <v-row align="end" justify="space-between">
+      <v-col class="text-left">
+        <span class="display-1 font-weight-light" v-text="bpm"></span>
+        <span class="subheading font-weight-light mr-1">BPM</span>
+      </v-col>
+      <v-row align="end">
+        <v-col>
           <v-fade-transition>
             <v-avatar
               v-if="isPlaying"
-              :color="color"
+              color="primary"
               :style="{
                 animationDuration: animationDuration,
               }"
@@ -17,34 +19,35 @@
             ></v-avatar>
           </v-fade-transition>
         </v-col>
-        <v-col class="text-right">
-          <v-btn :color="color" dark depressed fab @click="toggle">
-            <v-icon large>
-              {{ isPlaying ? "mdi-pause" : "mdi-play" }}
-            </v-icon>
-          </v-btn>
-        </v-col>
       </v-row>
 
-      <v-slider
-        @input="sendEvent"
-        v-model="bpm"
-        :color="color"
-        track-color="grey"
-        always-dirty
-        min="40"
-        max="218"
-      >
-        <template v-slot:prepend>
-          <v-icon :color="color" @click="decrement"> mdi-minus </v-icon>
-        </template>
+      <v-col class="text-right">
+        <v-btn color="primary" dark depressed fab @click="toggle">
+          <v-icon large>
+            {{ isPlaying ? "mdi-pause" : "mdi-play" }}
+          </v-icon>
+        </v-btn>
+      </v-col>
+    </v-row>
 
-        <template v-slot:append>
-          <v-icon :color="color" @click="increment"> mdi-plus </v-icon>
-        </template>
-      </v-slider>
-    </v-card-text>
-  </v-card>
+    <v-slider
+      @input="sendEvent"
+      v-model="bpm"
+      color="primary"
+      track-color="grey"
+      always-dirty
+      min="40"
+      max="218"
+    >
+      <template v-slot:prepend>
+        <v-icon color="primary" @click="decrement"> mdi-minus </v-icon>
+      </template>
+
+      <template v-slot:append>
+        <v-icon color="primary" @click="increment"> mdi-plus </v-icon>
+      </template>
+    </v-slider>
+  </v-card-text>
 </template>
 
 <script>
@@ -64,13 +67,6 @@ export default {
     console.log("init en Metro, bpm = " + JSON.stringify(this.bpm));
   },
   computed: {
-    color() {
-      if (this.bpm < 100) return "indigo";
-      if (this.bpm < 125) return "teal";
-      if (this.bpm < 140) return "green";
-      if (this.bpm < 175) return "orange";
-      return "red";
-    },
     animationDuration() {
       return `${60 / this.bpm}s`;
     },
