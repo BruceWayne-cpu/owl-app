@@ -1,5 +1,13 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <scan></scan>
 </template>
+
+<script>
+import Scan from "../components/Scan";
+export default {
+  name: "About",
+  components: {
+    Scan,
+  },
+};
+</script>
