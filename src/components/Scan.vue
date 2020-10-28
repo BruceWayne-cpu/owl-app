@@ -1,7 +1,5 @@
 <template>
   <v-container>
-    <span>{{ text }}</span>
-
     <v-card class="mx-auto" max-width="300">
       <v-btn block large color="primary" @click="scan">
         <v-icon left large>mdi-bluetooth</v-icon> SCAN</v-btn
@@ -37,7 +35,6 @@ export default {
   data() {
     return {
       devices: [],
-      text: "default",
     };
   },
   mounted() {},
@@ -58,7 +55,7 @@ export default {
     },
     handleDevice(dev) {
       connectDevice(dev);
-      this.$router.push("/about");
+      this.$router.push("/");
     },
   },
 };

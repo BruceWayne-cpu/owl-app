@@ -1,9 +1,14 @@
 import Vue from 'vue'
+import VueTouch from 'vue-touch';
 import App from './App.vue'
 import router from './router'
 import vuetify from './plugins/vuetify';
 import { Plugins } from '@capacitor/core'
+
+Vue.use(VueTouch);
+
 const { SplashScreen } = Plugins
+
 
 Vue.config.productionTip = false
 
